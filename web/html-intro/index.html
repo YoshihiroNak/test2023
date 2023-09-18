@@ -4,6 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Intro</title>
+    <style>
+        /* Element selector */
+        h1, p { font-size: 16px;
+            color: red;
+            background-color: yellow;
+        }
+        /* ID selector */
+        #hobbies {
+            border: 2px solid green;
+        }
+        /* Apply to all li elements that are children of #hobbies 
+            any element with that ID */
+        #hobbies li {
+            background-color: lightblue;
+        }
+
+        li:hover, #hobbies li:hover {
+            background-color: lightgreen;
+        }
+        /* Class selector */
+        .big {
+            font-size: 2em;
+
+        }
+    </style>
 </head>
 <body>
     <h1>Hello World!</h1>
@@ -13,8 +38,19 @@
 
 
 
-    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, ullam!</p>
+    <p class="big">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo, ullam!</p>
     <img src="http://placekitten.com/600/" alt="Cute kitten photo">
-    <a href="https://google.com/">Go to Google!</a>
+    <a class="big" href="https://google.com/">Go to Google!</a>
+
+    <ul id="hobbies">
+        <li>Coding</li>
+        <li>Gaming</li>
+        <li>Reading</li>
+    </ul>
+    <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
 </body>
 </html>
