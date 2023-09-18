@@ -1,0 +1,29 @@
+/* Element selector */
+h1,
+p {
+    font-size: 16px;
+    color: red;
+    background-color: yellow;
+}
+
+/* ID selector */
+#hobbies {
+    border: 2px solid green;
+}
+
+/* Apply to all li elements that are children of #hobbies 
+            any element with that ID */
+#hobbies li {
+    background-color: lightblue;
+}
+
+li:hover,
+#hobbies li:hover {
+    background-color: lightgreen;
+}
+
+/* Class selector */
+.big {
+    font-size: 2em;
+
+}
