@@ -1,20 +1,53 @@
-h1, p {
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+h1,body > p {
     background-color: #dde0e3;
 }
 
 h1 {
     padding: 4rem;
+    /* border: 0.2rem solid red; */
+    border: double red;
+    border-width: 0.5vw 1vw;
 }
 
-p {
+body > p {
     /* padding-top: 2rem;
     padding-bottom: 2rem;
     padding-left: 1rem;
     padding-right: 1rem; */
-    padding: 2rem 1rem;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    /* padding: 10vm 20vw; */
 }
 
 em, strong {
     /* display: block; */
     background-color: #b2d6ff;
 }
+
+.btn {
+    box-sizing: border-box;
+    color: white;
+    background-color: #5995da;
+    font-weight: bold;
+    padding: 1.5rem;
+    text-align: center;
+    border: 2px solid blue;
+    font-size: 1.5rem;
+    border-radius: 0.5rem;
+    width: 200px;
+}
+
+.btn img {
+    width: 50%;
+}
+
+/* body > div > p {} */
+/* body div > p {} */
