@@ -10,19 +10,35 @@
 # goodbye()
 
 # tax_rate = 0.1
-TAX_RATE = 0.1
-FLAT_SHIPPING =10
+# TAX_RATE = 0.1
+# FLAT_SHIPPING =10
 
-def add_tax(amount):
-    return amount * (1 + TAX_RATE)
+# def add_tax(amount):
+#     return amount * (1 + TAX_RATE)
 
-def add_shipping(amount):
-    return amount + FLAT_SHIPPING
+# def add_shipping(amount):
+#     return amount + FLAT_SHIPPING
 
-def calc_grand_total(amount):
-    return add_tax(add_shipping(amount))
+# def calc_grand_total(amount):
+#     return add_tax(add_shipping(amount))
 
-#Main
-subtotal = float(input("Subtotal: $"))
-grand_total = calc_grand_total(subtotal)
-print(f"Total: $ {grand_total: .2f}") 
+# #Main
+# subtotal = float(input("Subtotal: $"))
+# grand_total = calc_grand_total(subtotal)
+# print(f"Total: $ {grand_total: .2f}") 
+
+#Q12
+
+celsius = input()
+
+
+fahrenheit = (celsius*9/5)+32
+
+print(f"The resuult is: {fahrenheit}.")
+
+
+
+
+
+
+
