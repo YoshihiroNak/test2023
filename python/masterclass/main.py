@@ -7,6 +7,7 @@ def my_name(num):
 
     return inner_function
 
+
 @my_name(42)
 def greet(name):
     print(f'Hello, {name}')
