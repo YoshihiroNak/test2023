@@ -1,16 +1,33 @@
+import sys
+
+
 # display a main
 # display shows up when the user clicks
+# Need to make it easy to see
 def welcome():
     print("")
     print("*** Welcome to the catering services for your party! ***")
     print("")
+    print("Would you like to have a look?")
+    print("")
+    user_select = input("Please press y/n: ")
+    if user_select == "y":
+        description()
+    elif user_select == "n":
+        print("Thank you very much")
+        sys.exit(0)
+    else:
+        print("Something went wrong")
+
+    budget()
 
 
 # description
+# More information for user to understand our service easily
 def description():
     pass
 # Budget checking
-def budjet():
+def budget():
     print("Please choose your budget for your party")
     print("")
     print("")
@@ -20,97 +37,259 @@ def budjet():
     print("")
     print("$ 200  Thai  food,  Press '3'")
     print("")
+    plan()
 # choose a plan
+# Need to make error handling
 def plan():
-    user_plan = input("Please press the number: ")
+    while True:
+        user_plan = input("Please press the number: ")
 
-    if user_plan == '1':
-        chinese_food()
+        if user_plan == '1':
+            chinese_food()
 
-    elif user_plan == '2':
-        mexicon_food()
+        elif user_plan == '2':
+            mexicon_food()
 
-    elif user_plan == '3':
-        thai_food()
-
+        elif user_plan == '3':
+            thai_food()
+        else:
+            print("Something went wrong. Please try again")
+            # try_again = input("Please press y/n: ")
+            # if try_again == 'y':
+            # break
+    # print("Something went wrong. Please try again")
+        # return print("Something went wrong. Please try again")
 # Chinese food function
+# Need to make error handling
+# Need to create '2' and '3'
+# Need to calculate
 def chinese_food():
-    print("")
-    print("***Chinese food***")
-    print("***")
-    print("Our Chinese food menus include spring rolls, dumplings and dim-sum.")
-    print("***")
-    print("Please select your main dish")
-    print("")
-    print("[+$0]Chicken Fried Rice, Press '1'")
-    print("")
-    print("[+$20] Char Siu  Pork, Press '2'")
-    print("")
-    print("[+$40]  Mongolian Beef,  Press '3'")
-    print("")
+    while True:
+        print("")
+        print("*** Chinese food ***")
+        print("***")
+        print("Our Chinese food menus include spring rolls, dumplings and dim-sum.")
+        print("***")
+        print("Please select your main dish")
+        print("")
+        print("[+$0]Chicken Fried Rice, Press '1'")
+        print("")
+        print("[+$20] Char Siu  Pork, Press '2'")
+        print("")
+        print("[+$40]  Mongolian Beef,  Press '3'")
+        print("")
 
-    user_dish = input("Please press the number: ")
+        user_dish = input("Please press the number: ")
 
-    if user_dish == '1':
-        optional()
+        if user_dish == '1':
+            option1()
+        elif user_dish == '2':
+            option1()
+        elif user_dish == '3':
+            option1()
+        else:
+            print("Something went wrong. Please try again")
 # Mexico food function
 def mexicon_food():
-    print("***Mexican food***")
-    print("***")
-    print("Our Mexican food menus include TACOS, Burritos and Pozole.")
-    print("***")
-    print("Please select your main dish")
-    print("")
-    print("[+$0]Mexican Lime Chicken, Press '1'")
-    print("")
-    print("[+$20] Pork Carnitas, Press '2'")
-    print("")
-    print("[+$40]Barbacoa Beef,  Press '3'")
-    print("")
+    while True:
+        print("*** Mexican food ***")
+        print("***")
+        print("Our Mexican food menus include TACOS, Burritos and Pozole.")
+        print("***")
+        print("Please select your main dish")
+        print("")
+        print("[+$0]Mexican Lime Chicken, Press '1'")
+        print("")
+        print("[+$20] Pork Carnitas, Press '2'")
+        print("")
+        print("[+$40]Barbacoa Beef,  Press '3'")
+        print("")
+
+        user_dish = input("Please press the number: ")
+
+        if user_dish == '1':
+            option2()
+        elif user_dish == '2':
+            option2()
+        elif user_dish == '3':
+            option2()
+        else:
+            print("Something went wrong. Please try again")
+
 # Thai food function
 def thai_food():
-    print("***Thai food***")
-    print("***")
-    print("Our Thai food menus include Pad Thai, Som Tum and Tom Yum Goong.")
-    print("***")
-    print("Please select your main dish")
-    print("")
-    print("[+$0]Thai Fried Cheiken, Press '1'")
-    print("")
-    print("[+$20]Thai Basil Pork Belly, Press '2'")
-    print("")
-    print("[+$40]Pad Gra Prow,  Press '3'")
-    print("")
+    while True:
+        print("*** Thai food ***")
+        print("***")
+        print("Our Thai food menus include Pad Thai, Som Tum and Tom Yum Goong.")
+        print("***")
+        print("Please select your main dish")
+        print("")
+        print("[+$0]Thai Fried Cheiken, Press '1'")
+        print("")
+        print("[+$20]Thai Basil Pork Belly, Press '2'")
+        print("")
+        print("[+$40]Pad Gra Prow,  Press '3'")
+        print("")
+
+        user_dish = input("Please press the number: ")
+
+        if user_dish == '1':
+            option3()
+        elif user_dish == '2':
+            option3()
+        elif user_dish == '3':
+            option3()
+        else:
+            print("Something went wrong. Please try again")
 # choose a main
 def dish():
 
         pass
-# choose optional
-def optional():
-    print("")
-    print("Would you like to add DESSERTS?")
-    user_opt = input("Please press y/n: ")
-    if user_opt.lower() == 'y':
-        dessert()
-    elif user_opt.lower() == 'n':
-        pass
+# choose option
+def option1():
+    while True:
+        print("")
+        print("Would you like to add DESSERTS?")
+        user_opt = input("Please press y/n: ")
+        if user_opt.lower() == 'y':
+            dessert1()
+        elif user_opt.lower() == 'n':
+            a_option()
+        else:
+            print("Something went wrong. Please try again")
+
+def option2():
+    while True:
+        print("")
+        print("Would you like to add DESSERTS?")
+        user_opt = input("Please press y/n: ")
+        if user_opt.lower() == 'y':
+            dessert2()
+        elif user_opt.lower() == 'n':
+            a_option()
+        else:
+            print("Something went wrong. Please try again")
+
+def option3():
+    while True:
+        print("")
+        print("Would you like to add DESSERTS?")
+        user_opt = input("Please press y/n: ")
+        if user_opt.lower() == 'y':
+            dessert3()
+        elif user_opt.lower() == 'n':
+            a_option()
+        else:
+            print("Something went wrong. Please try again")
 
 # desserts
-def dessert():
-    print("dessert")
-# alcoholic
-def alcohol():
-    pass
-# fill allergy
-def  allergy():
-    pass
-# conform display
-def conform():
-    pass
-# try again or exit
-def exit():
-    pass
+def dessert1():
+    while True:
+        print("")
+        print("[+$10] Tofu Pudding")
+        # chinese dessert inputs
+        chi_des = input("Please press y/n: ")
+        if chi_des.lower() == 'y':
+            a_option()
+        elif chi_des.lower() == 'n':
+            a_option()
+        else:
+            print("Something went wrong. Please try again")
 
+    # Mixican dessert inputs
+def dessert2():
+    while True:
+        print("")
+        print("[+$10] Sweet Mexican corn cake")
+
+        chi_des = input("Please press y/n: ")
+        if chi_des.lower() == 'y':
+            a_option()
+        elif chi_des.lower() == 'n':
+            a_option()
+        else:
+            print("Something went wrong. Please try again")
+
+    # Thai dessert inputs
+def dessert3():
+    while True:
+        print("")
+        print("[+$10] Banana Roti")
+
+        chi_des = input("Please press y/n: ")
+        if chi_des.lower() == 'y':
+            a_option()
+        elif chi_des.lower() == 'n':
+            a_option()
+        else:
+            print("Something went wrong. Please try again")
+# choose another option
+def a_option():
+    while True:
+        print("")
+        print("Would you like to add alcoholic?")
+        user_a_opt = input("Please press y/n: ")
+        if user_a_opt.lower() == 'y':
+            alcohol()
+        elif user_a_opt.lower() == 'n':
+            allergy()
+        else:
+            print("Something went wrong. Please try again")
+# alcoholic
+
+def alcohol():
+    while True:
+        print("")
+        print("alcohol")
+        print("[+$30] BEER, WINE, SAKE")
+        # chinese dessert inputs
+        chi_des = input("Please press y/n: ")
+        if chi_des.lower() == 'y':
+            allergy()
+        elif chi_des.lower() == 'n':
+            allergy()
+        else:
+            print("Something went wrong. Please try again")
+    # fill allergy
+    # Input form
+
+
+def  allergy():
+    
+    print("")
+    print("Please fill out your food allergies if you have")
+    user_allergy = input("Do you have any food allergies?: ")
+    print("")
+    print(f"Your food allergy: {user_allergy}")
+    conform()
+
+
+
+# conform display
+# Need to be with plan and total
+def conform():
+    print("")
+    print("Please comform your plan")
+    print("")
+    end()
+
+# try again or exit
+def end():
+        print("Would you like to try again?")
+        user_exit = input("Please press y/n: ")
+        if user_exit == 'y':
+            welcome()
+        elif user_exit == 'n':
+            print("")
+            print("Thank you for choosing us.")
+            sys.exit(0)
+            
+            
+            
+        else:
+            print("Thank you for choosing us.")
+            sys.exit(1)
+            
+            
 welcome()
-budjet()
-plan()
