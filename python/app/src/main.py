@@ -10,12 +10,15 @@ class Calculation:
     def get_balance(self):
         return print(self.balance)
     
+    def reset_balance(self):
+        self.balance = 0
 
+# Set user balance
 user = Calculation(balance=0)
 # balance = 0
 # user.deposit(100)
 # user.deposit(100)
-user.get_balance()
+# user.get_balance()
 
 
 # display a main
@@ -356,6 +359,7 @@ def end():
         print("Would you like to try again?")
         user_exit = input("Please press y/n: ")
         if user_exit == 'y':
+            user.reset_balance()
             welcome()
         elif user_exit == 'n':
             print("")
