@@ -6,7 +6,7 @@ class Calculation:
     def __init__(self, balance):
         self.balance = balance
 
-    def deposit(self, amount):
+    def price(self, amount):
         self.balance += amount
 
     def get_balance(self):
@@ -15,10 +15,29 @@ class Calculation:
     def reset_balance(self):
         self.balance = 0
 
-
 plans = {}
 
 user = Calculation(balance=0)
+
+# main
+def main():
+    budget()
+    while True:
+        user_plan = input("Please press the number: ")
+        if user_plan == '1':
+            plans["food"] = 'Chinese food'
+            user.price(100)
+            chinese_food()
+        elif user_plan == '2':
+            plans["food"] = 'Mexican food'
+            user.price(150)    
+            mexicon_food()
+        elif user_plan == '3':
+            plans["food"] = 'Thai food'
+            user.price(200)
+            thai_food()
+        else:
+            print("Something went wrong. Please try again")
 
 # Budget checking
 def budget():
@@ -35,8 +54,6 @@ def budget():
     )
 
 def chinese_food(): # Chinese food function
-        print()
-        print("")
         print("*** Chinese food ***")
         print("***")
         print("Our Chinese food menus include spring rolls, dumplings and dim-sum.")
@@ -61,13 +78,13 @@ def chinese_food(): # Chinese food function
                 dessert1()
                 # $100
             elif user_dish == '2':
-                user.deposit(20)
+                user.price(20)
                 # plans.append("Char Siu Park")
                 plans["main_dish"] = "Char Siu  Pork"
                 dessert1()
                 # #120
             elif user_dish == '3':
-                user.deposit(40)
+                user.price(40)
                 # plans.append("Mongolian Beef")
                 plans["main_dish"] = "Mongolian Beef"
                 dessert1()
@@ -99,11 +116,11 @@ def mexicon_food(): # Mexico food function
                 plans["main_dish"] = "Mexican Lime Chicken"
                 dessert2()
             elif user_dish == '2':
-                user.deposit(20)
+                user.price(20)
                 plans["main_dish"] = "Pork Carnitas"
                 dessert2()
             elif user_dish == '3':
-                user.deposit(40)
+                user.price(40)
                 plans["main_dish"] = "]Barbacoa Beef"
                 dessert2()
             else:
@@ -133,12 +150,12 @@ def thai_food(): # Thai food function
                 dessert3()
 
             elif user_dish == '2':
-                user.deposit(20)
+                user.price(20)
                 plans["main_dish"] = "Thai Basil Pork Belly"
                 dessert3()
 
             elif user_dish == '3':
-                user.deposit(40)
+                user.price(40)
                 plans["main_dish"] = "Pad Gra Prow"
                 dessert3()
 
@@ -155,7 +172,7 @@ def dessert1(): # chinese dessert input
 
             chi_des = input("Please press y/n: ")
             if chi_des.lower() == 'y':
-                user.deposit(10)
+                user.price(10)
                 plans["dessert"] = "Tofu Pudding"
                 a_option()
             elif chi_des.lower() == 'n':
@@ -173,7 +190,7 @@ def dessert2():   # Mixican dessert inputs
 
             chi_des = input("Please press y/n: ")
             if chi_des.lower() == 'y':
-                user.deposit(10)
+                user.price(10)
                 plans["dessert"] = "Sweet Mexican corn cake"
                 a_option()
             elif chi_des.lower() == 'n':
@@ -191,7 +208,7 @@ def dessert3():   # Thai dessert input
 
             chi_des = input("Please press y/n: ")
             if chi_des.lower() == 'y':
-                user.deposit(10)
+                user.price(10)
                 plans["dessert"] = "Banana Roti"
                 a_option()
             elif chi_des.lower() == 'n':
@@ -224,7 +241,7 @@ def alcohol():
 
             chi_des = input("Please press y/n: ")
             if chi_des.lower() == 'y':
-                user.deposit(30)
+                user.price(30)
                 plans["alcohol"] = "BEER, WINE, SAKE"
                 allergy()
             elif chi_des.lower() == 'n':
@@ -267,26 +284,6 @@ def end():
         else:
             print("Thank you for choosing us.")
             sys.exit(1)
-    
-# main
-def main():
-    budget()
-    while True:
-        user_plan = input("Please press the number: ")
-        if user_plan == '1':
-            plans["food"] = 'Chinese food'
-            user.deposit(100)
-            chinese_food()
-        elif user_plan == '2':
-            plans["food"] = 'Mexican food'
-            user.deposit(150)    
-            mexicon_food()
-        elif user_plan == '3':
-            plans["food"] = 'Thai food'
-            user.deposit(200)
-            thai_food()
-        else:
-            print("Something went wrong. Please try again")
 
 
 if __name__ == "__main__":
