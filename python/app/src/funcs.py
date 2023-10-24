@@ -13,7 +13,7 @@ price = []
 
 # Main
 def budget():
-    print(pyfiglet.figlet_format("Welcome to the catering services for your party!"))
+    print(pyfiglet.figlet_format("Catering services for your party!"))
     
     print("Please choose your budget for your party"
     "\n"
@@ -45,6 +45,15 @@ def budget():
     #     else:
     #         print(Fore.RED + "Something went wrong. Please try again")
 
+def main_dish(): # Chinese food function
+        print("Please select your main dish")
+        print("")
+        print("[+$0]Crispy Fried Chicken, Press '1'")
+        print("")
+        print("[+$20]Roasted Pork Belly, Press '2'")
+        print("")
+        print("[+$40]Angus Beef Steak,  Press '3'")
+        print("")
 
 def chinese_food(): # Chinese food function
         print("*** Chinese food ***")
