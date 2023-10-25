@@ -277,5 +277,5 @@ def end():
 
 
 
-if __name__ == "__main__":
-    budget()
+# if __name__ == "__main__":
+#     budget()
