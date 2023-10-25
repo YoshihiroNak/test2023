@@ -1,4 +1,5 @@
-# import pyfiglet
+import sys
+import pyfiglet
 import colorama
 from colorama import Fore
 
@@ -53,7 +54,7 @@ def drink(id, menu, price):
 def select_plan():
 
     while True:
-        user_num = input("Please pass the number: ")
+        user_num = input("Please press the number: ")
         if user_num == "1":
             price.append(plan1["price"])
             return plan1["menu"]
@@ -72,7 +73,7 @@ def select_plan():
 def select_dish():
 
     while True:
-        user_num = input("Please pass the number: ")
+        user_num = input("Please press the number: ")
         if user_num == "1":
             price.append(dish1["price"])
             return dish1["menu"]
@@ -90,7 +91,7 @@ def select_dish():
 def select_drink():
 
     while True:
-        user_num = input("Please pass the number: ")
+        user_num = input("Please press the number: ")
         if user_num == "1":
             price.append(drink1["price"])
             return drink1["menu"]
@@ -103,13 +104,30 @@ def select_drink():
         else:
             print(Fore.RED + "Something went wrong. Please try again")
 
+# Try again or exit
+# def end():
+#     while True:
+#         # print("Would you like to try again?\n")
+#         user_exit = input("Please press y/n: ")
+#         if user_exit == 'y':
+#             price.clear()
+
+#         elif user_exit == 'n':
+#             print("Thank you for choosing us.")
+#             sys.exit(0)
+            
+#         else:
+#             print(Fore.RED + "Something went wrong. Please try again")
+#             sys.exit(1)
+
+
 # Calculate total price
 price = []
 
 # Main
 
-print("Welcome")
-# print(pyfiglet.figlet_format("Catering services for your party!"))
+# print("Welcome")
+print(pyfiglet.figlet_format("Catering services for your party"))
 print(f"Our {plan1['menu']} menus include spring rolls, dumplings, dim-sum and Tofu Pudding.\n")
 print(f"Our {plan2['menu']}  menus include TACOS, Burritos, Pozole and Sweet Mexican corn cake.\n")
 print(f"Our {plan3['menu']} menus include Pad Thai, Som Tum, Tom Yum Goong and Banana Roti.\n")
@@ -153,4 +171,6 @@ print(f"Main Dish : {user_dish}")
 print(f"Alcoholic : {user_drink}")
 print(f"Food allergy: {allergy}")
 print(f"Your total price : ${sum(price)}")
-
+print("\n")
+# print("Would you like to try again?\n")
+# end()

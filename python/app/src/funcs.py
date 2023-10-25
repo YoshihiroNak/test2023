@@ -259,20 +259,18 @@ def confirm():
 
 # Try again or exit
 def end():
-        print("Would you like to try again?\n")
+    while True:
+        # print("Would you like to try again?\n")
         user_exit = input("Please press y/n: ")
         if user_exit == 'y':
             price.clear()
-            plans.clear() 
-            budget() #
 
         elif user_exit == 'n':
-            print("")
             print("Thank you for choosing us.")
             sys.exit(0)
             
         else:
-            print("Thank you for choosing us.")
+            print(Fore.RED + "Something went wrong. Please try again")
             sys.exit(1)
 
 
