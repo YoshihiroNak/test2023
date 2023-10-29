@@ -23,6 +23,7 @@ def plan(id, menu, price):
     print(f"Press: {id}")
     print(menu)
     print(f"${price}")
+    print("------------")
 
 # Main dishes
 
@@ -35,6 +36,8 @@ def dish(id, menu, price):
     print(f"Press: {id}")
     print(menu)
     print(f"${price}")
+    print("------------")
+
 
 # Drinks
 
@@ -47,17 +50,22 @@ def drink(id, menu, price):
     print(f"Press: {id}")
     print(menu)
     print(f"${price}")
+    print("------------")
+
 
 # This function expresses the title of this application
 # And also it shows the 3 types of details of the menus
+# feature 1
 
 def welcome():
     print(pyfiglet.figlet_format("Catering services for your party"))
     print(Fore.LIGHTGREEN_EX +"Please check our catering menus and price list\n"
         "After selecting menus, you can check the total price\n")
-    print(f"Our {plan1['menu']} menu includes spring rolls, dumplings, dim-sum and Tofu Pudding.\n")
-    print(f"Our {plan2['menu']}  menu includes TACOS, Burritos, Pozole and Sweet Mexican corn cake.\n")
-    print(f"Our {plan3['menu']} menu includes Pad Thai, Som Tum, Tom Yum Goong and Banana Roti.\n")
+    print(f"Our {plan1['menu']} menu includes spring rolls, Gyozas, Dim-Sum and Pudding\n")
+    print(f"Our {plan2['menu']} menu includes TACOS, Burritos, Pozole and Corn Cake\n")
+    print(f"Our {plan3['menu']} menu includes Pad Thai, Som Tum, Tom Yum Goong and Roti\n")
+
+# feature 1
 
 def show_plan():
     time.sleep(.5)
@@ -79,6 +87,7 @@ def show_drink():
 
 # Plans
 # Users select one of the menu by pressing the number [1 or 2 or 3]
+# feature 2
 
 def select_plan():
 

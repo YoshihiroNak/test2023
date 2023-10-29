@@ -2,27 +2,35 @@
 import sys
 import colorama
 from colorama import Fore
-from functions import (price, welcome, show_plan, show_dish, show_drink, select_plan, select_dish, select_drink)
+from functions import (price, welcome, show_plan, show_dish,
+                        show_drink, select_plan, select_dish, select_drink)
 import time
 colorama.init(autoreset=True)
 
 
 # Main 
+
 def main():
     welcome()
     show_plan()
+
     # Choose a plan
+
     user_menu = select_plan()
-    print("Please choose one of the main dish from here.")
+    print("Please choose one of the main dish from here.\n")
 
     show_dish()
+
     # Choose a main dish
+
     user_dish = select_dish()
 
 
-    print("Would you like to add alcoholic?")
+    print("Would you like to add alcoholic?\n")
     show_drink()
+
     # Choose a drink
+
     user_drink = select_drink()
 
     allergy = input("Please fill out your food allergies if you have:\n")
@@ -40,6 +48,8 @@ def main():
     end()
 
 # users select to try again or exit
+# feature 4
+
 def end():
     while True:
         user_exit = input("Please press y/n: ")
@@ -52,7 +62,6 @@ def end():
             
         else:
             print(Fore.RED + "Something went wrong. Please try again")
-            sys.exit(1)
 
 if __name__ == "__main__":
     main()
