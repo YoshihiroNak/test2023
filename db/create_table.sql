@@ -1,5 +1,5 @@
 drop table items;
-drop table caategories;
+drop table categories;
 
 -- Categories
 create table categories (
@@ -10,7 +10,7 @@ create table categories (
 );
 
 insert into categories (name, description) values
-    ('Electronic', 'Gadgets to make life easier'),
+    ('Electronics', 'Gadgets to make life easier'),
     ('Car Parts', 'Expensive stuff for the box with 4 wheels'),
     ('Sports', 'Get out and play'),
     ('Video Game', 'Stay in and play!')
@@ -25,7 +25,12 @@ create table items (
     description text not null,
 
     category_id integer not null,
-    foreign key (category_id) references categories (id)
+    foreign key (category_id) references categories (id) on delete cascade
 );
 
-
+insert into items (name, description, category_id) values
+    ('Skyrim', 'Awesome open-world RPG', 4),
+    ('World of Warcaraft', 'Popular MMORRG', 4),
+    ('iPhone', 'Apple''s flagship smartphone', 1),
+    ('Greg Norman golf clubs', 'At least you can look like a pro', 3)
+;
