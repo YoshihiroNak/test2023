@@ -20,11 +20,11 @@ def hello(name):
     # name = 'Jack'
     return {'message': f'Hello, {name}'}
 
-@app.route('/add/<int:num1>/<int:num2>')
-def add(num1, num2):
-        # num1 = int(request.args.get('num1'))
-        # num2 = int(request.args.get('num2'))
-        return {'result': num1 + num2}
+# @app.route('/add/<int:num1>/<int:num2>')
+# def add(num1, num2):
+#         # num1 = int(request.args.get('num1'))
+#         # num2 = int(request.args.get('num2'))
+#         return {'result': num1 + num2}
 
 # @app.route('/current_time')
 # def current_time():
@@ -39,6 +39,27 @@ def type_error(error):
 @app.errorhandler(404)
 def not_found(error):
     return {'error': str(error)}, 404
+
+@app.route("/calculator/<int:num1>/add/<int:num2>")
+def add(num1, num2):
+    answer = {"operation": str(num1) + " plus " + str(num2),
+    "result": num1 + num2}
+    return answer
+
+@app.route("/calculator/<int:num1>/subtract/<int:num2>")
+def subtract(num1, num2):
+    return {"operation": str(num1) +" minus "+ str(num2),
+    "result": num1 - num2}
+
+@app.route("/calculator/<int:num1>/divide/<int:num2>")
+def divide(num1, num2):
+    return {"operation": str(num1) + " divided " + str(num2),
+    "result": num1 / num2}
+
+@app.route("/calculator/<int:num1>/multiply/<int:num2>")
+def multiply(num1, num2):
+    return {"operation": str(num1) + " multiplied " + str(num2),
+    "result": num1 * num2}
 
 
 if __name__ == '__main__':
