@@ -1,4 +1,5 @@
 from flask import Flask, request
+# from datetime import datetime
 
 app = Flask(__name__)
 
@@ -24,6 +25,12 @@ def add(num1, num2):
         # num1 = int(request.args.get('num1'))
         # num2 = int(request.args.get('num2'))
         return {'result': num1 + num2}
+
+# @app.route('/current_time')
+# def current_time():
+#     time = datetime.now()
+#     timestamp = time.strftime("%H:%M")
+#     return f'<p>{timestamp}</p>'
 
 @app.errorhandler(TypeError)
 def type_error(error):
