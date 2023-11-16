@@ -2,10 +2,20 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date
 from flask_marshmallow import Marshmallow
+# from psycopg import connect
+# from psycopg.rows import dict_row
 
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://trello_dev:1234@127.0.0.1:5432/trello'
+
+# db = connect("postgresql://trello_dev:spameggs123@127.0.0.1:5432/trello", row_factory=dict_row, options="-c datestyle=ISO,YMD")
+
+# @app.route('/cards')
+# def all_cards():
+#     card = db.execute("select * from cards where status = 'In Progress'").fetchall()
+#     return card
+
 
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
@@ -58,7 +68,6 @@ def db_seed():
 
     db.session.add_all(cards)
     db.session.commit()
-
 
     print('Database seeded')
 
