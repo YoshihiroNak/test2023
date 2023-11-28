@@ -4,7 +4,7 @@ from models.card import Card
 from models.user import User
 from datetime import date
 
-
+# Second one is the name of module # dounders are functions They allow class instances to interact with built-in functions and operators
 db_commands = Blueprint('db' , __name__) 
 
 @db_commands.cli.command('create')
