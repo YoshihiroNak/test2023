@@ -2,8 +2,9 @@ from flask import Blueprint, request
 from models.user import User, UserSchema
 from setup import bcrypt, db
 from sqlalchemy.exc import IntegrityError
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, jwt_required
 from datetime import timedelta
+from auth import admin_required
 
 
 
@@ -43,9 +44,18 @@ def login():
     if user and bcrypt.check_password_hash(user.password, user_info['password']):
         # Create a JWT token
         # token = create_access_token(identity=user.id, additional_claims={'email': user.email, 'name': user.name})
-        token = create_access_token(identity=user.email, expires_delta=timedelta(hours=1))
+        token = create_access_token(identity=user.id, expires_delta=timedelta(hours=1))
         # Rerurn the token
-        return {'token': token, 'user': UserSchema(exclude=['password']).dump(user)}
+        return {'token': token, 'user': UserSchema(exclude=['password', 'cards']).dump(user)}
     else:
         return {'error': 'Invalid email or password'}, 401
 
+@users_bp.route('/')
+@jwt_required()
+def all_users():
+    admin_required()
+    # select * from cards;
+    stmt = db.select(User) # .where(db.or_(Card.status != 'Done', Card.id > 2)).order_by(Card.title.desc())
+    users = db.session.scalars(stmt).all()
+    print(users[0].cards)
+    return UserSchema(many=True, exclude=['password']).dump(users)

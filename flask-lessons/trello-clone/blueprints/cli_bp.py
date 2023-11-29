@@ -15,6 +15,7 @@ def db_create():
 
 @db_commands.cli.command('seed')
 def db_seed():
+    # Users
     users = [
         User(
             email="admin@spam.com",
@@ -24,32 +25,40 @@ def db_seed():
         User(
             name="john Cleese",
             email="cleese@spam.com",
-            password=bcrypt.generate_password_hash("spam123").decode('utf8')
+            password=bcrypt.generate_password_hash("tisbutascratch").decode('utf8')
         )
     ]
 
+    db.session.add_all(users)
+    db.session.commit()
+
+    # Cards
     cards = [
         Card(
             title = 'Start the project',
             description = 'Stage 1 - Create ERD',
             status = 'Done',
             data_created = date.today(),
+            user_id = users[0].id
         ),
         Card(
             title = 'ORM Queries',
             description = 'Stage 2 - Implement CRUD queries',
             status = 'Progres',
             data_created = date.today(),
+            user_id = users[1].id
         ),
         Card(
             title = 'Mashmallow',
             description = 'Stage 3 - Imprement JSONify of models',
             status = 'Progres',
             data_created = date.today(),
+            user_id = users[0].id
         ),
     ]
 
-    db.session.add_all(users)
+
+
     db.session.add_all(cards)
     db.session.commit()
 
