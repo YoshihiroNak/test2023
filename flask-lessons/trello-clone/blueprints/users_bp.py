@@ -44,7 +44,7 @@ def login():
     if user and bcrypt.check_password_hash(user.password, user_info['password']):
         # Create a JWT token
         # token = create_access_token(identity=user.id, additional_claims={'email': user.email, 'name': user.name})
-        token = create_access_token(identity=user.id, expires_delta=timedelta(hours=1))
+        token = create_access_token(identity=user.id, expires_delta=timedelta(hours=3))
         # Rerurn the token
         return {'token': token, 'user': UserSchema(exclude=['password', 'cards']).dump(user)}
     else:

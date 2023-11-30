@@ -8,5 +8,4 @@ app.register_blueprint(db_commands)
 app.register_blueprint(users_bp)
 app.register_blueprint(cards_bp)
 
-
-
+print(app.url_map)

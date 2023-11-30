@@ -3,6 +3,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from setup import db
 from models.card import Card, CardSchema
 from auth import admin_required
+from blueprints.comments_bp import comments_bp
 
 cards_bp = Blueprint('cards', __name__, url_prefix='/cards')
 
@@ -31,7 +32,6 @@ def one_card(id):
 @cards_bp.route('/', methods=['POST'])
 @jwt_required()
 def create_card():
-    admin_required()
     card_info = CardSchema(exclude=["id", "data_created"]).load(request.json)
     card = Card(
         title = card_info['title'],
@@ -47,7 +47,6 @@ def create_card():
 @cards_bp.route('/<int:id>', methods=['PUT', 'PATCH'])
 @jwt_required()
 def update_card(id):
-    admin_required()
     card_info = CardSchema(exclude=["id", "data_created"]).load(request.json)
     stmt = db.select(Card).filter_by(id=id) # .where(Card.id == id)
     card = db.session.scalar(stmt)
@@ -64,7 +63,6 @@ def update_card(id):
 @cards_bp.route('/<int:id>', methods=['DELETE'])
 @jwt_required()
 def delete_card(id):
-    admin_required()
     stmt = db.select(Card).filter_by(id=id) # .where(Card.id == id)
     card = db.session.scalar(stmt)
     if card:
@@ -73,3 +71,5 @@ def delete_card(id):
         return {}, 200
     else:
         return {'error': 'Card not found'}, 404
+    
+cards_bp.register_blueprint(comments_bp)

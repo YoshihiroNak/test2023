@@ -16,10 +16,12 @@ class Card(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     # SQLAlchemy relationship - nest an instance of a User model tn this one
     user = db.relationship('User', back_populates='cards')
+    comments = db.relationship('Comment', back_populates='card')
 
 class CardSchema(ma.Schema):
     user = fields.Nested('UserSchema', exclude=['password'])
+    comments = fields.Nested('CommentSchema', many=True, exclude=['card'])
 
     class Meta:
-        fields = ('id', 'title', 'description', 'status', 'data_created', 'user')
+        fields = ('id', 'title', 'description', 'status', 'data_created', 'user', 'comments')
         
