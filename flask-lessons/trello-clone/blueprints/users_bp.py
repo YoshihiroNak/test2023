@@ -4,7 +4,7 @@ from setup import bcrypt, db
 from sqlalchemy.exc import IntegrityError
 from flask_jwt_extended import create_access_token, jwt_required
 from datetime import timedelta
-from auth import admin_required
+from auth import authorize
 
 
 
@@ -12,7 +12,9 @@ users_bp = Blueprint('users', __name__, url_prefix='/users')
 
 
 @users_bp.route('/register', methods=['POST'])
+@jwt_required()
 def register():
+    authorize() # Admin only
     try:
         # Parse incoming POST body through the schema
         user_info = UserSchema(exclude=['id', 'is_admin']).load(request.json)
@@ -53,7 +55,7 @@ def login():
 @users_bp.route('/')
 @jwt_required()
 def all_users():
-    admin_required()
+    authorize() # Admin only
     # select * from cards;
     stmt = db.select(User) # .where(db.or_(Card.status != 'Done', Card.id > 2)).order_by(Card.title.desc())
     users = db.session.scalars(stmt).all()

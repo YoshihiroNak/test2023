@@ -2,7 +2,7 @@ from flask import Blueprint, request, abort
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from setup import db
 from models.comment import Comment, CommentSchema
-from auth import admin_required
+from auth import authorize
 
 comments_bp = Blueprint('comments', __name__, url_prefix='/<int:card_id>/comments')
 
@@ -51,9 +51,8 @@ def update_comment(card_id, comment_id):
     stmt = db.select(Comment).filter_by(id=comment_id) # .where(comment.id == id)
     comment = db.session.scalar(stmt)
     if comment:
+        authorize(comment.user_id)
         comment.massage = comment_info.get('massage', comment.massage)
-        comment.description = comment_info.get('description', comment.description)
-        comment.status = comment_info.get('status', comment.status)
         db.session.commit()
         return CommentSchema().dump(comment)
     else:
@@ -61,12 +60,13 @@ def update_comment(card_id, comment_id):
     
 # Delete a comment
 # DELETE /cards/<card_id>/comments/<comment_id>
-@comments_bp.route('/<int:id>', methods=['DELETE'])
+@comments_bp.route('/<int:comment_id>', methods=['DELETE'])
 @jwt_required()
 def delete_comment(card_id, comment_id):
-    stmt = db.select(Comment).filter_by(id=id) # .where(comment.id == id)
+    stmt = db.select(Comment).filter_by(id=comment_id) # .where(comment.id == id)
     comment = db.session.scalar(stmt)
     if comment:
+        authorize(comment.user_id)
         db.session.delete(comment)
         db.session.commit()
         return {}, 200

@@ -1,6 +1,9 @@
 from setup import db, ma
 from datetime import datetime
 from marshmallow import fields
+from marshmallow.validate import OneOf, Regexp, Length, And
+
+VALID_STATUSES = ('To Do', 'Done', 'Progress', 'Testing', 'Deployed', 'Cancelled')
 
 class Card(db.Model):
     __tablename__ = 'cards'
@@ -21,6 +24,12 @@ class Card(db.Model):
 class CardSchema(ma.Schema):
     user = fields.Nested('UserSchema', exclude=['password'])
     comments = fields.Nested('CommentSchema', many=True, exclude=['card'])
+    status = fields.String(validate=OneOf(VALID_STATUSES))
+    # Title must contain only letters, numbers and spaces
+    title = fields.String(required=True, validate=And(
+        Regexp('^[0-9a-zA-Z ]+$', error='Title must contain only letters, numbers and spances'),
+        Length(min=3, error='Title must be at least 3 characters long')
+    ))
 
     class Meta:
         fields = ('id', 'title', 'description', 'status', 'data_created', 'user', 'comments')

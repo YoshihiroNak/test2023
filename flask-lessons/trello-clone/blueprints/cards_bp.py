@@ -2,10 +2,12 @@ from flask import Blueprint, request, abort
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from setup import db
 from models.card import Card, CardSchema
-from auth import admin_required
+from auth import authorize
 from blueprints.comments_bp import comments_bp
 
 cards_bp = Blueprint('cards', __name__, url_prefix='/cards')
+
+cards_bp.register_blueprint(comments_bp)
 
 #Get all cards
 @cards_bp.route('/')
@@ -51,6 +53,7 @@ def update_card(id):
     stmt = db.select(Card).filter_by(id=id) # .where(Card.id == id)
     card = db.session.scalar(stmt)
     if card:
+        authorize(card.user_id)
         card.title = card_info.get('title', card.title)
         card.description = card_info.get('description', card.description)
         card.status = card_info.get('status', card.status)
@@ -66,10 +69,10 @@ def delete_card(id):
     stmt = db.select(Card).filter_by(id=id) # .where(Card.id == id)
     card = db.session.scalar(stmt)
     if card:
+        authorize(card.user_id)
         db.session.delete(card)
         db.session.commit()
         return {}, 200
     else:
         return {'error': 'Card not found'}, 404
     
-cards_bp.register_blueprint(comments_bp)
