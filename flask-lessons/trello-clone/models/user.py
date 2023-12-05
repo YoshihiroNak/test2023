@@ -19,8 +19,8 @@ class User(db.Model):
 class UserSchema(ma.Schema):
     # cards = fields.List(fields.Nested('CardSchema', exclude=['user']))
     cards = fields.Nested('CardSchema', exclude=['user'], many=True)
-    email = fields.Email(require=True)
-    password = fields.String(require=True, validate=Length(min=8, error='Password must be at least 8 characters'))
+    email = fields.Email(required=True)
+    password = fields.String(required=True, validate=Length(min=8, error='Password must be at least 8 characters'))
 
     class Meta:
         fields = ('id', 'name', 'email', 'password', 'is_admin', 'cards')
